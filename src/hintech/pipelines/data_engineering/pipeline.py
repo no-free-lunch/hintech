@@ -1,18 +1,11 @@
-from kedro.pipeline import node, Pipeline
+from typing import Any
 
-from hintech.pipelines.data_engineering.nodes import (
-    preprocess_train,
-)
+from kedro.pipeline import Pipeline, node
+
+from hintech.pipelines.data_engineering.nodes import preprocess_train
 
 
-def create_pipeline(**kwargs):
+def create_pipeline(**kwargs: Any) -> Pipeline:
     return Pipeline(
-        [
-            node(
-                func=preprocess_train,
-                inputs="train",
-                outputs="preprocessed_train",
-                name="preprocessing_train",
-            )
-        ]
+        [node(func=preprocess_train, inputs="train", outputs="preprocessed_train", name="preprocessing_train",)]
     )

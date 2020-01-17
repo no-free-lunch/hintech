@@ -27,10 +27,12 @@
 # limitations under the License.
 """Pipeline construction."""
 
-from typing import Dict
+from typing import Any, Dict
 
 from kedro.pipeline import Pipeline
+
 from hintech.pipelines.data_engineering import pipeline as de
+
 # from hintech.pipelines import data_science as ds
 
 
@@ -50,11 +52,7 @@ from hintech.pipelines.data_engineering import pipeline as de
 # $ kedro run
 
 
-def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
+def create_pipelines(**kwargs: Any) -> Dict[str, Pipeline]:
     de_pipeline = de.create_pipeline()
 
-    return {
-        "de": de_pipeline,
-        "__default__": de_pipeline
-    }
-
+    return {"de": de_pipeline, "__default__": de_pipeline}
