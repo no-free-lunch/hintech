@@ -30,8 +30,8 @@
 from typing import Dict
 
 from kedro.pipeline import Pipeline
-from hintech.pipelines import data_engineering as de
-from hintech.pipelines import data_science as ds
+from hintech.pipelines.data_engineering import pipeline as de
+# from hintech.pipelines import data_science as ds
 
 
 # Here you can define your data-driven pipeline by importing your functions
@@ -51,17 +51,10 @@ from hintech.pipelines import data_science as ds
 
 
 def create_pipelines(**kwargs) -> Dict[str, Pipeline]:
-    """Create the project's pipeline.
-
-    Args:
-        kwargs: Ignore any additional arguments added in the future.
-
-    Returns:
-        A mapping from a pipeline name to a ``Pipeline`` object.
-
-    """
+    de_pipeline = de.create_pipeline()
 
     return {
-        "__default__": Pipeline([])
+        "de": de_pipeline,
+        "__default__": de_pipeline
     }
 

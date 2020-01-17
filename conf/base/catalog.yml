@@ -3,3 +3,12 @@
 # Documentation for this file format can be found in the kedro docs under `Accessing data`
 # You can access the kedro docs by running `kedro docs`
 
+
+train:
+  type: CSVLocalDataSet
+  filepath: data/01_raw/train.tsv
+  load_args: {"sep": "\t"}
+
+preprocessed_train:
+  type: CSVLocalDataSet
+  filepath: data/02_intermediate/preprocessed_train.csv
